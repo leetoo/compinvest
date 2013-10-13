@@ -48,7 +48,7 @@ def marketsim(argv):
 	for i in range(1, len(account.index)):
 	    account.ix[i] = account.ix[i-1] + account.ix[i]
 	    
-	account['value'] = (account.ix[:,:-1] * close).sum(axis=1) + account['cash'] + initial_value
+	account['value'] = (account.ix[:,:-2] * close).sum(axis=1) + account['cash'] + initial_value
 
 	account['Year'] = account.index.map(lambda x: x.year)
 	account['Month'] = account.index.map(lambda x: x.month)

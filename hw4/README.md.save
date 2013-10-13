@@ -1,0 +1,9 @@
+Computational Investing Homework 4-
+
+Overview
+-----------------------------------------------------------------------------------------------------------------
+In this homework you will take the output of your Event Study work to build a more complete back testing platform. 
+Specifically, you should choose an event from the ones you have experimented with in this class, assess it and tune
+it using the Event Profiler, then back test it with the simulator you created.
+
+

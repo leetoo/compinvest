@@ -17,7 +17,7 @@ def marketsim(argv):
 	orders['date'] = orders.apply(lambda x: dt.datetime(x[0],x[1],x[2],16), axis = 1)
 	orders = orders[['date','symbol','action','volumn']]
 	orders.volumn = orders.volumn.astype(int)
-	orders = orders.sort()
+	orders = orders.sort(['date'])
 
 	startday = orders.date.irow(0)
 	endday = orders.date.irow(-1)
@@ -35,7 +35,8 @@ def marketsim(argv):
 	account = close * 0
 	account['cash'] = .0
 	account['value'] = .0
-
+	
+	print "Start Calculating Daily Values"
 	for index, order in orders.iterrows():
 	    symbol = order['symbol']
 	    time = order['date']
@@ -52,7 +53,8 @@ def marketsim(argv):
 	account['Year'] = account.index.map(lambda x: x.year)
 	account['Month'] = account.index.map(lambda x: x.month)
 	account['Day'] = account.index.map(lambda x: x.day)
-
+	
+	print "Writting Daily Values to " + output_file
 	account.to_csv(output_file,index=False,cols=['Year','Month','Day','value'])
 
 if __name__ == '__main__':
